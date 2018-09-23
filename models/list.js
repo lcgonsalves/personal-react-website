@@ -8,9 +8,6 @@ var listSchema = new mongoose.Schema({
         type: String
     },
     items: [String],
-    body: {
-        type: String
-    },
     category: {
         type: String,
         required: 'Please supply a category.'

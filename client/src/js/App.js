@@ -9,28 +9,36 @@ class App extends Component {
     {
         super(props);
         this.state = {
-            page: pageEnum.home
+            page: pageEnum.home,
+            categories: []
         };
 
     }
 
+    /**
+     * Fetch all categories on server
+     */
+    componentDidMount()
+    {
+        this.updateCategories()
+        // todo: refactor so ALL  GETs are made in APP.js
+    }
+
+    /**
+     * Get all categories on server
+     */
+    updateCategories()
+    {
+        fetch('/categories/').then((data) => data.json())
+            .then((categories) => this.setState({categories: [...categories]}))
+            .catch((err) => console.error(err))
+            .finally(() => console.log(this.state.categories));
+    }
+
     render() {
-        // todo: remove temp data
-        const tempSections = [
-            {
-
-            }
-
-        ];
-
-        const tempLists = [
-
-        ];
-
-
         return (
             <div className="app">
-                <Home/>
+                <Home categories={this.state.categories}/>
             </div>
         );
     }

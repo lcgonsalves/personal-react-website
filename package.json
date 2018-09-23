@@ -4,7 +4,7 @@
   "description": "Leo's React.JS website with a Node.JS backend.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-and-run": "cd client && npm run build && cd .. && node server.js"
   },
   "author": "Léo Gonsalves",
   "license": "ISC",
