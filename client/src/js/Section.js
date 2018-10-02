@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Section.css'
 
+// todo: make stateless functional
 class Section extends Component
 {
     static defaultProps = {
