@@ -1,0 +1,14 @@
+.section-container {
+    /* todo: remove debug */
+    border: solid aqua;
+
+
+}
+
+.half {
+    width: 49%;
+}
+
+.full {
+    width: 100%;
+}

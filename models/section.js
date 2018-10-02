@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
 var sectionSchema = new mongoose.Schema({
+    contentType: {
+        type: String,
+        default: 'section'
+    },
     title: {
         type: String
     },
@@ -19,6 +23,10 @@ var sectionSchema = new mongoose.Schema({
     category: {
         type: String,
         required: 'Must have a category'
+    },
+    length: {
+        type: String,
+        default: 'half'
     }
 });
 

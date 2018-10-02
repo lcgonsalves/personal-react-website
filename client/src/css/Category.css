@@ -1,0 +1,35 @@
+.category {
+    /* todo: remove debug */
+    border: solid aqua;
+
+    width: 100%;
+    min-height: 40%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.category .title-container {
+    /* todo: remove debug */
+    border: solid red;
+
+    margin: 0;
+    width: 25%;
+    height: auto;
+    flex-grow: 0; /* should stay the same size */
+}
+
+.category .subsection-container {
+    /* todo: remove debug */
+    border: solid darkgreen;
+
+    margin: 0;
+    width: auto;
+    height: 100%;
+    flex-grow: 1; /* should fill the rest of the container */
+
+    /* display properties */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}

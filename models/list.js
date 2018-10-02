@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
 var listSchema = new mongoose.Schema({
+    contentType: {
+        type: String,
+        default: 'list'
+    },
     title: {
         type: String
     },
@@ -11,6 +15,10 @@ var listSchema = new mongoose.Schema({
     category: {
         type: String,
         required: 'Please supply a category.'
+    },
+    length: {
+        type: String,
+        default: 'half'
     }
 });
 

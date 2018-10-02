@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import '../css/Section.css'
 
-// todo: make stateless functional
-class Section extends Component
+const renderLocationAndDate = (location, dateRange) => {
+    if (typeof location !== 'undefined' && typeof dateRange !== 'undefined') return <h3>{`${location}, ${dateRange}`}</h3>;
+    else return null;
+};
+
+const Section = (props) =>
 {
-    static defaultProps = {
+    let cssClassName = 'section-container ' + props.length;
+    const {title, subtitle, location, dateRange, body} = props;
 
-    };
-
-    render()
-    {
-        return (
-            <div>this is a section</div>
-        );
-    }
-}
+    return (
+        <div className={cssClassName}>
+            <h1>{title}</h1>
+            <h2>{subtitle}</h2>
+            <hr/>
+            {renderLocationAndDate(location, dateRange)}
+            <p>{body}</p>
+        </div>
+    );
+};
 
 export default Section;
