@@ -100,5 +100,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+config.js
 
 # End of https://www.gitignore.io/api/node
