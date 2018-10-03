@@ -1,35 +1,47 @@
 .category {
-    /* todo: remove debug */
-    border: solid aqua;
+    box-sizing: border-box;
 
-    width: 100%;
+    width:      100%;
     min-height: 40%;
-    display: flex;
-    flex-wrap: nowrap;
+    display:    flex;
+    flex-wrap:  nowrap;
 }
 
 .category .title-container {
-    /* todo: remove debug */
-    border: solid red;
-
     margin: 0;
-    width: 25%;
+    padding-left: 1em;
+    padding-top: 1em;
+    width:  35%;
     height: auto;
-    flex-grow: 0; /* should stay the same size */
+    flex-basis: 22%;
+    text-align: end;
+}
+
+.category .title-container h2 {
+    font-size: 1.5em;
+    display: inline;
+    font-family: 'Roboto', serif;
+    font-weight: 300;
 }
 
 .category .subsection-container {
-    /* todo: remove debug */
-    border: solid darkgreen;
-
     margin: 0;
-    width: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    width:  75%;
     height: 100%;
-    flex-grow: 1; /* should fill the rest of the container */
 
     /* display properties */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+}
 
+.white {
+    background-color: white;
+}
+
+.gray {
+    background-color: #f4f4f4;
 }

@@ -13,8 +13,8 @@ const Section = (props) =>
 
     return (
         <div className={cssClassName}>
-            <h1>{title}</h1>
-            <h2>{subtitle}</h2>
+            <h1>{title.toUpperCase() + " "}</h1>
+            <h2>{subtitle.toLowerCase()}</h2>
             <hr/>
             {renderLocationAndDate(location, dateRange)}
             <p>{body}</p>
