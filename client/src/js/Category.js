@@ -39,7 +39,7 @@ const Category = (props) =>
     return (
         <div className={"category " + props.color}>
             <div className="title-container">
-                <h2>{props.title.toUpperCase()}</h2>
+                <h2>{props.title && props.title.toUpperCase()}</h2>
             </div>
             <div className="subsection-container">
                 {subsections}

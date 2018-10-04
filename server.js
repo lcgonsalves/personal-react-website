@@ -16,8 +16,10 @@ app.use('/content', contentRoutes);
 
 app.get('/', function(req, res) {
     res.status(200);
-    res.sendFile(path.join(__dirname + './client/build/index.html'));
+    res.sendFile(path.join(__dirname + './client/build/index.html'),
+        (err) => res.status(500).send(err));
 });
+
 
 app.listen(port, function () {
     console.log("Leo's server running on " + port);

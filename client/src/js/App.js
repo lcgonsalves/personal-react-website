@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import '../css/App.css';
-import Category from './Category';
+import Navbar from './Navbar';
+import Home from './Home';
 
 class App extends Component {
 
@@ -8,85 +10,41 @@ class App extends Component {
         super(props);
 
         this.state = {
-            availableCategories: [],
-            content: [
-                {
-                    category: 'skills',
-                    subsections: [
-                        {
-                            contentType: 'section',
-                            title: 'Self Teaching',
-                            subtitle: 'All kinds of subjects',
-                            body:
-                                `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et.`,
-                            length: 'half'
-                        },
-                        {
-                            contentType: 'section',
-                            title: 'Writing',
-                            subtitle: 'Books and papers',
-                            location: 'São Paulo',
-                            dateRange: '1997 - 1999',
-                            body:
-                                `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et.`,
-                            length: 'half'
-                        }
+            // fetch categories as soon as app starts
+            availableCategories: []
+        };
 
-                    ]
-                },
-                {
-                    category: 'another one',
-                    subsections: [
-                        {
-                            contentType: 'section',
-                            title: 'Self Teaching',
-                            subtitle: 'All kinds of subjects',
-                            body:
-                                `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et.`,
-                            length: 'full'
-                        },
-                        {
-                            contentType: 'section',
-                            title: 'Writing',
-                            subtitle: 'Books and papers',
-                            location: 'São Paulo',
-                            dateRange: '1997 - 1999',
-                            body:
-                                `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et.`,
-                            length: 'half'
-                        },
-                        {
-                            contentType: 'section',
-                            title: 'Writing',
-                            subtitle: 'Books and papers',
-                            location: 'São Paulo',
-                            dateRange: '1997 - 1999',
-                            body:
-                                `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis mattis sem a tristique. Nulla at nisl nec dolor molestie semper. Integer molestie enim elit, ac feugiat dolor vehicula vel. Cras eros enim, porta quis felis id, tristique molestie quam. Fusce non lectus enim. Vivamus rhoncus mi tortor, vitae convallis enim pulvinar et.`,
-                            length: 'half'
-                        }
+        this.refreshCategories = this.refreshCategories.bind(this);
+    }
 
-                    ]
-                }
-            ]
-        }
+    // fetch all categories in server
+    componentDidMount()
+    {
+        this.refreshCategories();
+    }
+
+    refreshCategories() {
+        fetch('/categories/all')
+            .then(data => data.json())
+            .then(categories => {
+                console.log(categories);
+                this.setState({availableCategories: [...categories]})
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
-        let test = this.state.content[0];
-        let othertest = this.state.content[1];
-
         return (
-            <div className="app">
-                <Category title={test.category}
-                          subsections={test.subsections}
-                          color="gray"
-                />
-                <Category title={othertest.category}
-                          subsections={othertest.subsections}
-                          color="white"
-                />
-            </div>
+            <Router>
+                <div className="app">
+                    <Navbar/>
+                    <Switch>
+                        <Route path="/home" render={() => (
+                            <Home categories={this.state.availableCategories.filter(category => (category.page === 'home'))}/>
+                        )}/>
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }

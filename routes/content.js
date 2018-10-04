@@ -3,14 +3,14 @@ var router = express.Router();
 var db = require('../models');
 
 // get all lists in a category
-router.get('/:category/lists', (req, res) => {
+router.get('/lists/:category', (req, res) => {
     db.list.find({category: req.params.category})
         .then((lists) => res.json(lists))
         .catch((err) => res.send(err));
 });
 
 // get all sections in a category
-router.get('/:category/sections', (req, res) => {
+router.get('/sections/:category', (req, res) => {
     db.section.find({category: req.params.category})
         .then((sections) => res.json(sections))
         .catch((err) => res.send(err));
