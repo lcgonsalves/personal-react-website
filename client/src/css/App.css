@@ -1,7 +1,4 @@
 .app {
     height: 100%;
     width: auto;
-
-    /* todo: debug, remove*/
-    border: 3px solid #db0015;
 }

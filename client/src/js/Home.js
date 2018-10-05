@@ -34,35 +34,41 @@ class Home extends Component {
 
     componentDidMount()
     {
-        // for each available passed-in category, fetch related lists
-        this.props.categories.forEach( (category, index) => {
-            const { name } = category;
+        // for each fetched category, fetch related lists
+        fetch('/categories/home')
+            .then(data => data.json())
+            .then(categories => {
+                console.log(categories); // todo: debug
+                categories.forEach( (category) => {
+                    const { name } = category;
 
-            let newContentItem =
-                {
-                    category: name,
-                    subsections: []
-                };
+                    let newContentItem = {
+                            category: name,
+                            subsections: []
+                        };
 
-            let listUri = '/content/lists/' + name;
-            let sectionUri = '/content/sections/' + name;
+                    let listUri = '/content/lists/' + name;
+                    let sectionUri = '/content/sections/' + name;
 
-            // start with lists
-            fetch(listUri)
-                .then(listData => listData.json())
-                .then(lists => {
-                    newContentItem.subsections.push(...lists);
+                    // start with lists
+                    fetch(listUri)
+                        .then(listData => listData.json())
+                        .then(lists => {
+                            console.log(lists); // todo: debug
+                            newContentItem.subsections.push(...lists);
 
-                    return fetch(sectionUri);
-                })
-                .then(sectionData => sectionData.json())
-                .then(sections => newContentItem.subsections.push(...sections))
-                .catch(err => console.error(err))
-                .finally(() => this.setState((oldState, props) => (
-                    {content: [...oldState.content, newContentItem]}
-                )));
+                            return fetch(sectionUri);
+                        })
+                        .then(sectionData => sectionData.json())
+                        .then(sections => newContentItem.subsections.push(...sections))
+                        .catch(err => console.error(err))
+                        .finally(() => this.setState((oldState) => (
+                            {content: [...oldState.content, newContentItem]}
+                        )));
 
-        });
+                });
+            }) // fetching happens here
+            .catch(err => console.error(err));
     }
 
     toggleColor()
@@ -77,6 +83,8 @@ class Home extends Component {
 
     render()
     {
+        console.log(this.state.content); // todo: debug
+
         return (
           <div>
               {this.state.content.map((item, index) => (

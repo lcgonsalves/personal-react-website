@@ -5,6 +5,7 @@
     flex-direction: column;
     box-sizing: border-box;
     justify-content: space-between;
+    background-color: black;
 }
 
 .link-container {
@@ -16,7 +17,7 @@
 }
 
 .navbar-link {
-    width: 5em;
+    min-width: 6em;
     height: 2.5em;
     margin: 0.2em;
     display: flex;
@@ -25,6 +26,23 @@
 }
 
 .navbar-link a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.navbar-link a:hover {
+    text-decoration: underline;
+}
+
+.navbar-link a:visited {
+    color: white;
+    text-decoration: none;
 }
 
 .logo-and-title-container {
@@ -47,7 +65,7 @@
     min-width: 5em;
     max-width: 10em;
     margin: 2em;
-    transform: rotate(45deg);
+    /* transform: rotate(45deg); */
 }
 
 .display-title {
@@ -55,7 +73,8 @@
     justify-content: center;
     font-family: 'Lora', serif;
     font-size: 4em;
+    color: white;
 
     margin-block-start: 0.2em;
-    margin-block-end: 0.2em;
+    margin-block-end: 0.8em;
 }
