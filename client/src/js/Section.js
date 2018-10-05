@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/Section.css'
 
 const renderLocationAndDate = (location, dateRange) => {

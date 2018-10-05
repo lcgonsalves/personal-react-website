@@ -1,0 +1,23 @@
+.picture-container {
+    margin: 1em;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.picture {
+
+}
+
+.half {
+    width: 45%;
+}
+
+.full {
+    width: 100%;
+}
+
+.picture-container img {
+    max-width: 15em;
+    max-height: 15em;
+}

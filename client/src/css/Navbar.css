@@ -1,6 +1,6 @@
 .navbar-container {
     width: 100%;
-    height: 30em; /*todo: see if works*/
+    height: 30em;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;

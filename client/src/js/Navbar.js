@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import logo from '../img/logo.png';
 import '../css/Navbar.css';
 
-// todo: fetch images from server
+// todo: fetch images from server. possibly use Flickr API
 
 class Navbar extends Component {
     constructor(props) {
         super(props);
 
-        this.linkTitles = ['home', 'portfolio', 'resume'];
+        this.linkTitles = ['home', 'portfolio', 'about', 'resume'];
     }
 
     static defaultProps = {

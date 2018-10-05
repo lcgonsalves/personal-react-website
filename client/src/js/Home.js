@@ -38,7 +38,7 @@ class Home extends Component {
         fetch('/categories/home')
             .then(data => data.json())
             .then(categories => {
-                console.log(categories); // todo: debug
+                console.log(categories);
                 categories.forEach( (category) => {
                     const { name } = category;
 
@@ -54,7 +54,7 @@ class Home extends Component {
                     fetch(listUri)
                         .then(listData => listData.json())
                         .then(lists => {
-                            console.log(lists); // todo: debug
+                            console.log(lists);
                             newContentItem.subsections.push(...lists);
 
                             return fetch(sectionUri);
@@ -83,8 +83,6 @@ class Home extends Component {
 
     render()
     {
-        console.log(this.state.content); // todo: debug
-
         return (
           <div>
               {this.state.content.map((item, index) => (

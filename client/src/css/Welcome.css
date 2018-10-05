@@ -1,0 +1,10 @@
+.welcome-statement {
+    height: 10em;
+}
+
+.welcome-statement h1 {
+    margin: 2em;
+    text-align: center;
+    font-family: "Roboto Condensed", serif;
+    color: #848484;
+}

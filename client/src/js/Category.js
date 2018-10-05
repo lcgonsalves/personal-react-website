@@ -14,7 +14,6 @@ const Category = (props) =>
         switch (cur.contentType)
         {
             case 'section':
-                // todo: make sure spread operator is appropriate
                 /* return (
                     <Section title={cur.title}
                              subtitle={cur.subtitle}

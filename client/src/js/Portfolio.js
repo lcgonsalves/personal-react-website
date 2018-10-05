@@ -11,7 +11,7 @@ class Portfolio extends Component {
         this.state = {
             content: [],
             socialMediaItems: [],
-            socialMediaPhrase: 'Find all my work here'
+            socialMediaPhrase: 'Find all about me and my work here'
         };
 
         // fields that should be constant

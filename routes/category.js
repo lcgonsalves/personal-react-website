@@ -21,6 +21,12 @@ router.get('/portfolio', (req, res) => {
         .catch((err) => res.send(err));
 });
 
+router.get('/welcome', (req, res) => {
+    db.category.find({page: 'welcome'})
+        .then((categories) => res.status(200).json(categories))
+        .catch((err) => res.send(err));
+});
+
 // add new category
 router.post('/new-category/', (req, res) => {
     db.category.create(req.body)
